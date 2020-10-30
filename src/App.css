@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+}
+
+.App{
+  background-color: #fafafa;
+  
+}
+.App_header{
+  background-color: white;
+  object-fit: contain;
+  border-bottom: 1px solid lightgray;
+  padding: 10px;
+}
+
+.App_signUp{
+  display: flex;
+  flex-direction: column;
+}
