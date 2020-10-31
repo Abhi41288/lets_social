@@ -6,11 +6,28 @@
   background-color: #fafafa;
   
 }
+
+.App_posts{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.App_postRight{
+  margin-left: 20px;
+}
+
+
 .App_header{
+  position: sticky;
+  top: 0;
+  z-index: 1;
   background-color: white;
   object-fit: contain;
   border-bottom: 1px solid lightgray;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .App_signUp{

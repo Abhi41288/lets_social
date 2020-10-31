@@ -7,6 +7,7 @@ import Post from './Post';
 import ImageUpload from './ImageUpload';
 import './App.css';
 import { db, auth } from './firebase';
+import InstagramEmbed from 'react-instagram-embed';
 
 function getModalStyle() {
   const top = 50;
@@ -87,9 +88,6 @@ function App() {
 
   return (
     <div className="App">
-
-
-
       <Modal
         open={open}
         onClose={() => setOpen(false)}
@@ -148,24 +146,40 @@ function App() {
 
       <div className="App_header">
         <img className="app_headerImage" src={logo} alt="social" />
+        {user ? (
+          <Button onClick={() => auth.signOut()}>Logout</Button>
+        ) : (
+            <div>
+              <Button onClick={() => setOpen(true)}>Sign up</Button>
+              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+            </div>
+          )
+        }
       </div>
-      {user ? (
-        <Button onClick={() => auth.signOut()}>Logout</Button>
-      ) : (
-          <div>
-            <Button onClick={() => setOpen(true)}>Sign up</Button>
+      <div className="App_posts">
+        <div className="App_postLeft">
+          {
+            posts.map(({ id, post }) => (
+              <Post key={id} postId={id} user={user} imageUrl={post.imageUrl} username={post.username} caption={post.caption} />
+            ))
+          }
+        </div>
+        <div className="App_postRight">
+          <InstagramEmbed
+            url='https://www.instagram.com/p/B9uAKXnFoVO/'
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName='div'
+            protocol=''
+            injectScript
+            onLoading={() => { }}
+            onSuccess={() => { }}
+            onAfterRender={() => { }}
+            onFailure={() => { }}
+          />
+        </div>
+      </div>
 
-            <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-          </div>
-        )
-
-      }
-
-      {
-        posts.map(({ id, post }) => (
-          <Post key={id} imageUrl={post.imageUrl} username={post.username} caption={post.caption} />
-        ))
-      }
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />

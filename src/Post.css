@@ -27,3 +27,28 @@
     margin-right: 10px;
 }
 
+.post_commentBox{
+    display: flex;
+    margin-top: 10px;
+}
+
+.post_comment{
+    padding: 10px;
+}
+
+.post_input{
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-top: 1px solid lightgray;
+}
+
+.post_button{
+    flex: 0;
+    border: none;    
+    border-top: 1px solid lightgray;
+    background-color: transparent;
+    color: violet;
+    cursor: pointer;
+}
+
